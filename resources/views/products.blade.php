@@ -21,6 +21,7 @@
         <div class="row">
             <h3 class="mb-5 text-info">Ajax Crud</h3>
             <div class="col-md-10 offset-1">
+                <a href="#" class="btn btn-info float-end mb-4" data-bs-toggle="modal" data-bs-target="#productModal">Add Product</a>
                 <table class="table table bordered">
                     <thead>
                         <tr>
@@ -47,7 +48,11 @@
     </div>
 
 
-@include('product_js')
+
+    @include('product_modal')
+
+
+    @include('product_js')
 
 
 </body>
