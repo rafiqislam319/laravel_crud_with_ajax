@@ -1,6 +1,7 @@
 <!-- Modal -->
 <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-    <form action="" method="POST" id="add_product_modal">
+    <form action="{{ route('add.product') }}" method="POST" id="add_product_modal">
+        @csrf
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -20,6 +21,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary save_product">Save product</button>
+                    <!-- <input type="submit" class="btn btn-primary save_product" value="Save Product"> -->
                 </div>
             </div>
         </div>

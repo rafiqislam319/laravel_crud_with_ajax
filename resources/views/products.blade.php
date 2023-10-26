@@ -22,7 +22,7 @@
             <h3 class="mb-5 text-info">Ajax Crud</h3>
             <div class="col-md-10 offset-1">
                 <a href="#" class="btn btn-info float-end mb-4" data-bs-toggle="modal" data-bs-target="#productModal">Add Product</a>
-                <table class="table table bordered">
+                <table class="table table bordered" id="productTable">
                     <thead>
                         <tr>
                             <th>SI</th>
@@ -32,17 +32,22 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($products as $key => $product )
+
+
                         <tr>
-                            <td>123</td>
-                            <td>abc</td>
-                            <td>abc</td>
+                            <td>{{ $key+1 }}</td>
+                            <td>{{ $product->name }}</td>
+                            <td>{{ $product->price }}</td>
                             <td>
                                 <a href="" class="btn btn-warning"><i class="las la-edit">Edit</i></a>
                                 <a href="" class="btn btn-danger"><i class="las la-trash"></i>Delete</i></a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
+                {!! $products->withQueryString()->links('pagination::bootstrap-5') !!}
             </div>
         </div>
     </div>

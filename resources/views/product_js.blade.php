@@ -11,6 +11,29 @@
 
 <script>
     $(document).ready(function() {
+        $('#add_product_modal').click(function(e) {
+            e.preventDefault();
 
-    })
+            let name = $('#name').val()
+            let price = $('#price').val()
+            // console.log(name + price)
+
+            $.ajax({
+                url: "{{ route('add.product') }}",
+                method: 'post',
+                data: {
+                    name: name,
+                    price: price
+                },
+                success: function(response) {
+                    if (response.status == 'success') {
+                        $('#productModal').modal('hide')
+                        $('#add_product_modal')[0].reset()
+                        $('#productTable').load(location.href + ' #productTable')
+                    }
+                }
+            });
+        });
+
+    });
 </script>
