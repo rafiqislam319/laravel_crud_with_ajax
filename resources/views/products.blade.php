@@ -40,7 +40,14 @@
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->price }}</td>
                             <td>
-                                <a href="" class="btn btn-warning"><i class="las la-edit">Edit</i></a>
+                                <a href="" class="btn btn-warning updateProductForm"
+                                 data-bs-toggle="modal"
+                                 data-bs-target="#updateProductModal"
+                                 data-id="{{$product->id}}" 
+                                 data-name="{{$product->name}}" 
+                                 data-price="{{$product->price}}"
+                                 >
+                                <i class="las la-edit">Edit</i></a>
                                 <a href="" class="btn btn-danger"><i class="las la-trash"></i>Delete</i></a>
                             </td>
                         </tr>
@@ -55,6 +62,7 @@
 
 
     @include('product_modal')
+    @include('product_update_modal')
 
 
     @include('product_js')
