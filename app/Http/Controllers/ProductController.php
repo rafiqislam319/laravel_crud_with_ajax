@@ -38,4 +38,14 @@ class ProductController extends Controller
             'status' => 'success'
         ]);
     }
+
+
+    public function deleteProduct(Request $request)
+    {
+        Product::find($request->up_id)->delete();
+
+        return response()->json([
+            'status' => 'success'
+        ]);
+    }
 }

@@ -48,7 +48,11 @@
                                  data-price="{{$product->price}}"
                                  >
                                 <i class="las la-edit">Edit</i></a>
-                                <a href="" class="btn btn-danger"><i class="las la-trash"></i>Delete</i></a>
+
+                                <a href="" class="btn btn-danger deleteProduct"
+                                data-id="{{$product->id}}"
+                                >
+                                <i class="las la-trash"></i>Delete</i></a>
                             </td>
                         </tr>
                         @endforeach
