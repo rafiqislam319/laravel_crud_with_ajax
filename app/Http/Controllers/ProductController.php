@@ -25,4 +25,17 @@ class ProductController extends Controller
             'status' => 'success'
         ]);
     }
+
+
+    public function updateProduct(Request $request)
+    {
+        Product::where('id', $request->up_id)->update([
+            'name' => $request->up_name,
+            'price' => $request->up_price
+        ]);
+
+        return response()->json([
+            'status' => 'success'
+        ]);
+    }
 }

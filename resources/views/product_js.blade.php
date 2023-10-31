@@ -11,6 +11,8 @@
 
 <script>
     $(document).ready(function() {
+
+        //add product
         $('#add_product_modal').click(function(e) {
             e.preventDefault();
 
@@ -35,6 +37,7 @@
             });
         });
 
+        //edit product
         $(document).on('click', '.updateProductForm', function() {
             let id = $(this).data('id')
             let name = $(this).data('name')
@@ -43,6 +46,34 @@
             $("#update_id").val(id)
             $("#update_name").val(name)
             $("#update_price").val(price)
+        });
+
+
+        //update product
+        $('.update_product').click(function(e) {
+            e.preventDefault();
+
+            let update_id = $('#update_id').val()
+            let update_name = $('#update_name').val()
+            let update_price = $('#update_price').val()
+            // console.log(name + price)
+
+            $.ajax({
+                url: "{{ route('update.product') }}",
+                method: 'post',
+                data: {
+                    up_id: update_id,
+                    up_name: update_name,
+                    up_price: update_price
+                },
+                success: function(response) {
+                    if (response.status == 'success') {
+                        $('#updateProductModal').modal('hide')
+                        $('#add_product_modal')[0].reset()
+                        $('#productTable').load(location.href + ' #productTable')
+                    }
+                }
+            });
         });
 
     });
