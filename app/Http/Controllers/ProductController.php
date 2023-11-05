@@ -56,4 +56,20 @@ class ProductController extends Controller
         $products = Product::latest()->paginate(5);
         return view('paginate_products', compact('products'));
     }
+
+    //live search
+    public function searchProduct(Request $request){
+        $products = Product::where('name', 'like', '%'.$request->searchProduct.'%')
+        ->orWhere('price', 'like', '%' . $request->searchProduct . '%')
+        ->paginate(5);
+
+        if($products->count() >=1){
+            return view('paginate_products', compact('products'));
+        }else{
+            return response()->json([
+                'status' => 'not_found'
+            ]);
+        }
+        
+    }
 }

@@ -141,6 +141,30 @@
 
         }
 
+        //search product
+        $(document).on('keyup', function(e) {
+            e.preventDefault();
+            let searchProduct = $('#searchProduct').val()
+            $.ajax({
+                url: "{{route('search.product')}}",
+                method: 'GET',
+                data: {
+                    searchProduct: searchProduct
+                },
+                success: function(res) {
+                    $('.table-data').html(res)
+
+                    if (res.status == 'not_found') {
+                        $('.table-data').html('<span class="text-danger">' + 'nothing found' + '</span>')
+
+                    }
+                }
+
+
+
+            })
+        })
+
 
 
     });
