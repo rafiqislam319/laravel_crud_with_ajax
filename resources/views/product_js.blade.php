@@ -94,7 +94,7 @@
                     },
                     success: function(response) {
                         if (response.status == 'success') {
-                            $('#productTable').load(location.href + ' #productTable')
+                            $('#productTable').load(location.href + ' <div id="produ">  </div>ctTable')
 
                             Command: toastr["success"]("product deleted successfully")
 
@@ -121,6 +121,27 @@
 
             }
         });
+
+
+        //pagination
+        $(document).on('click', '.pagination a', function(e) {
+            e.preventDefault();
+            let page = $(this).attr('href').split('page=')[1]
+            product(page)
+        })
+
+        function product(page) {
+            $.ajax({
+                url: "paginate/paginate-data?page=" + page,
+                success: function(res) {
+                    $('.table-data').html(res)
+
+                }
+            })
+
+        }
+
+
 
     });
 </script>

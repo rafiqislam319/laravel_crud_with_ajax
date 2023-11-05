@@ -22,35 +22,37 @@
             <h3 class="mb-5 text-info">Ajax Crud</h3>
             <div class="col-md-10 offset-1">
                 <a href="#" class="btn btn-info float-end mb-4" data-bs-toggle="modal" data-bs-target="#productModal">Add Product</a>
-                <table class="table table bordered" id="productTable">
-                    <thead>
-                        <tr>
-                            <th>SI</th>
-                            <th>Product Name</th>
-                            <th>Product Price</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($products as $key => $product )
+                <div class="table-data">
+                    <table class="table table bordered" id="productTable">
+                        <thead>
+                            <tr>
+                                <th>SI</th>
+                                <th>Product Name</th>
+                                <th>Product Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($products as $key => $product )
 
 
-                        <tr>
-                            <td>{{ $key+1 }}</td>
-                            <td>{{ $product->name }}</td>
-                            <td>{{ $product->price }}</td>
-                            <td>
-                                <a href="" class="btn btn-warning updateProductForm" data-bs-toggle="modal" data-bs-target="#updateProductModal" data-id="{{$product->id}}" data-name="{{$product->name}}" data-price="{{$product->price}}">
-                                    <i class="las la-edit">Edit</i></a>
+                            <tr>
+                                <td>{{ $key+1 }}</td>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->price }}</td>
+                                <td>
+                                    <a href="" class="btn btn-warning updateProductForm" data-bs-toggle="modal" data-bs-target="#updateProductModal" data-id="{{$product->id}}" data-name="{{$product->name}}" data-price="{{$product->price}}">
+                                        <i class="las la-edit">Edit</i></a>
 
-                                <a href="" class="btn btn-danger deleteProduct" data-id="{{$product->id}}">
-                                    <i class="las la-trash"></i>Delete</i></a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                {!! $products->withQueryString()->links('pagination::bootstrap-5') !!}
+                                    <a href="" class="btn btn-danger deleteProduct" data-id="{{$product->id}}">
+                                        <i class="las la-trash"></i>Delete</i></a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {!! $products->withQueryString()->links('pagination::bootstrap-5') !!}
+                </div>
             </div>
         </div>
     </div>
@@ -62,7 +64,7 @@
 
 
     @include('product_js')
-    
+
     {!! Toastr::message() !!}
 
 
